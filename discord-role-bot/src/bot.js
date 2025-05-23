@@ -224,11 +224,11 @@ async function garantirCargoDeRankParaTodos(client) {
         if (!rankERole) {
             rankERole = await guild.roles.create({ name: rankMaisBaixo, reason: 'Cargo de rank inicial criado automaticamente pelo bot' });
         }
-        const members = await guild.members.fetch();
-        for (const member of members.values()) {
+        // Em vez de buscar todos, use só os membros em cache
+        for (const member of guild.members.cache.values()) {
             if (member.user.bot) continue;
             // Atualiza a lista de cargos do membro
-            await member.fetch(true);
+            await member.fetch(true).catch(() => {});
             const jaTemRank = rankNames.some(rankName => member.roles.cache.some(role => role.name === rankName));
             if (!jaTemRank) {
                 await member.roles.add(rankERole).catch(() => {});
