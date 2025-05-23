@@ -1,0 +1,109 @@
+{
+  "prefix": "!",
+  "roles": [
+    {
+      "name": "JavaScript",
+      "emoji": "💛",
+      "description": "Desenvolvedor JavaScript",
+      "color": "#f7df1e"
+    },
+    {
+      "name": "Python",
+      "emoji": "🐍",
+      "description": "Desenvolvedor Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "Java",
+      "emoji": "☕",
+      "description": "Desenvolvedor Java",
+      "color": "#b07219"
+    },
+    {
+      "name": "C#",
+      "emoji": "🔷",
+      "description": "Desenvolvedor C#",
+      "color": "#178600"
+    },
+    {
+      "name": "React",
+      "emoji": "⚛️",
+      "description": "Desenvolvedor React",
+      "color": "#61dafb"
+    },
+    {
+      "name": "Frontend",
+      "emoji": "🎨",
+      "description": "Desenvolvedor Frontend",
+      "color": "#e34c26"
+    },
+    {
+      "name": "Backend",
+      "emoji": "⚙️",
+      "description": "Desenvolvedor Backend",
+      "color": "#6e5494"
+    },
+    {
+      "name": "DevOps",
+      "emoji": "🔄",
+      "description": "Engenheiro DevOps",
+      "color": "#f05032"
+    },
+    {
+      "name": "Mobile",
+      "emoji": "📱",
+      "description": "Desenvolvedor Mobile",
+      "color": "#00bcd4"
+    },
+    {
+      "name": "Assembly",
+      "emoji": "⚡",
+      "description": "Programador de Assembly",
+      "color": "#6E4C13"
+    },
+    {
+      "name": "Estudante",
+      "emoji": "📚",
+      "description": "Estudante de Programação",
+      "color": "#9e9e9e"
+    },
+    {
+      "name": "Angular",
+      "emoji": "🅰️",
+      "description": "Desenvolvedor Angular",
+      "color": "#dd0031"
+    },
+    {
+      "name": "TypeScript",
+      "emoji": "🔵",
+      "description": "Desenvolvedor TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "C++",
+      "emoji": "➕",
+      "description": "Desenvolvedor C++",
+      "color": "#00599c"
+    },
+    {
+      "name": "C",
+      "emoji": "🌊",
+      "description": "Desenvolvedor C",
+      "color": "#555555"
+    },
+    {
+      "name": "Bash",
+      "emoji": "💻",
+      "description": "Programador Bash",
+      "color": "#4eaa25"
+    }
+  ],
+  "embedColors": {
+    "main": "#0099ff",
+    "success": "#00ff00",
+    "error": "#ff0000"
+  },
+  "messages": {
+    "roleSelect": "**Selecione seus cargos de Programação**\n\nClique nas reações abaixo para escolher os cargos que melhor representam suas habilidades e interesses.\nVocê pode selecionar quantos cargos quiser!\n\nRemova a reação para remover o cargo."
+  }
+}
