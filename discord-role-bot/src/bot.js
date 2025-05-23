@@ -23,7 +23,6 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMessageReactions
-        // GatewayIntentBits.GuildMembers removido para evitar GuildMembersTimeout
     ],
     partials: [Partials.Message, Partials.Channel, Partials.Reaction]
 });
@@ -36,6 +35,7 @@ const mutedUsers = new Map();
 client.once('ready', async () => {
     // Apenas inicializa o bot e as funções de verificação, sem mensagem no chat geral
     readyEvent(client);
+    garantirCargoDeRankParaTodos(client);
     // Envia mensagem de boas-vindas apenas na DM do dono do servidor
     for (const guild of client.guilds.cache.values()) {
         try {
@@ -213,6 +213,28 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
 });
 client.on('guildMemberAdd', guildMemberAddEvent);
+
+// Função para garantir que todos tenham pelo menos um cargo de rank
+async function garantirCargoDeRankParaTodos(client) {
+    const rankNames = rankUtils.RANKS;
+    const rankMaisBaixo = rankNames[0];
+    for (const guild of client.guilds.cache.values()) {
+        await guild.roles.fetch();
+        let rankERole = guild.roles.cache.find(r => r.name === rankMaisBaixo);
+        if (!rankERole) {
+            rankERole = await guild.roles.create({ name: rankMaisBaixo, reason: 'Cargo de rank inicial criado automaticamente pelo bot' });
+        }
+        // Em vez de buscar todos, use só os membros em cache (NÃO faça member.fetch(true) para evitar timeout)
+        for (const member of guild.members.cache.values()) {
+            if (member.user.bot) continue;
+            // NÃO atualiza a lista de cargos do membro forçadamente
+            const jaTemRank = rankNames.some(rankName => member.roles.cache.some(role => role.name === rankName));
+            if (!jaTemRank) {
+                await member.roles.add(rankERole).catch(() => {});
+            }
+        }
+    }
+}
 
 // Executa a cada 30 minutos
 setInterval(() => {
