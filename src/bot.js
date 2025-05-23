@@ -23,6 +23,7 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMessageReactions
+        // GatewayIntentBits.GuildMembers removido para evitar GuildMembersTimeout
     ],
     partials: [Partials.Message, Partials.Channel, Partials.Reaction]
 });
