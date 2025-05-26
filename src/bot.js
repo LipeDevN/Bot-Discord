@@ -215,9 +215,24 @@ client.on('messageReactionRemove', async (reaction, user) => {
 client.on('guildMemberAdd', guildMemberAddEvent);
 
 // Executa a cada 30 minutos
-setInterval(() => {
-    garantirCargoDeRankParaTodos(client);
-}, 30 * 60 * 1000);
+// setInterval(() => {
+//     garantirCargoDeRankParaTodos(client);
+// }, 30 * 60 * 1000);
+process.on('multipleResolutions', (type, reason, promise) => {
+    console.log(`Err:\n` + type, promise, reason);
+  });
+
+  process.on('unhandledRejection', (reason, promise) => {
+    console.log(`Err:\n` + reason, promise);
+  });
+
+  process.on('uncaughtException', (error, origin) => {
+    console.log(`Err:\n` + error, origin);
+  });
+
+  process.on('uncaughtExceptionMonitor', (error, origin) => {
+    console.log(`Err:\n` + error, origin);
+  });
 
 client.login(process.env.TOKEN)
     .then(() => {
